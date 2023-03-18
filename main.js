@@ -21,16 +21,18 @@ form.addEventListener('submit', (e) => {
     const todoText = document.createElement('span')
     todoText.textContent = form.children[0].value
     const edit = document.createElement('button')
-    edit.textContent = "edit"
+    edit.setAttribute('id', 'edit')
     const remove = document.createElement('button')
-    remove.textContent = 'delete'
+    remove.setAttribute('id', 'remove')
     list.appendChild(checkbox)
     list.appendChild(todoText)
     list.appendChild(edit)
     list.appendChild(remove)
     ul.appendChild(list)
     form.appendChild(ul)
-
+    remove.addEventListener('click', ()=> {
+        ul.removeChild(list)
+    })
 })
 
 
