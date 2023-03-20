@@ -62,11 +62,19 @@ form.addEventListener('submit', (e) => {
     li.appendChild(edit)
     li.appendChild(remove)
     ul.appendChild(li)
-    container.appendChild(ul)
+    
     form.children[0].value = ''
 })
-
-
+container.appendChild(ul)
+ul.addEventListener('DOMSubtreeModified', () => {
+    // const li = document.querySelectorAll('li')
+    const li = Array.from(ul.children)
+    console.log(li);
+    todoObject['checked'] = li[0].childNodes[0].checked
+    todoObject['text'] = li[0].childNodes[1].value
+    todoArrow.push(todoObject)
+    console.log(todoArrow);
+})
 
 
 root.appendChild(container)
