@@ -16,7 +16,8 @@ container.appendChild(form)
 const ul = document.createElement('ul')
 
 let todoArrow = []
-let todoObject = {}
+let checkObject = {}
+let inputObjec = {} 
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -73,6 +74,7 @@ ul.addEventListener('DOMSubtreeModified', () => {
     todoObject['checked'] = li[0].childNodes[0].checked
     todoObject['text'] = li[0].childNodes[1].value
     todoArrow.push(todoObject)
+    localStorage.setItem(JSON.stringify(todoArrow))
     console.log(todoArrow);
 })
 
