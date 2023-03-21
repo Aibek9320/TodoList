@@ -17,7 +17,7 @@ const ul = document.createElement('ul')
 
 let todoArrow = []
 let checkObject = {}
-let inputObjec = {} 
+let inputObject = {} 
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -71,10 +71,12 @@ ul.addEventListener('DOMSubtreeModified', () => {
     // const li = document.querySelectorAll('li')
     const li = Array.from(ul.children)
     console.log(li);
-    todoObject['checked'] = li[0].childNodes[0].checked
-    todoObject['text'] = li[0].childNodes[1].value
-    todoArrow.push(todoObject)
-    localStorage.setItem(JSON.stringify(todoArrow))
+    checkObject['checked'] = li[0].childNodes[0].checked
+    inputObject['text'] = li[0].childNodes[1].value
+    todoArrow.push(checkObject)
+    todoArrow.push(inputObject)
+    let localArrow = todoArrow
+    localStorage.setItem('user', JSON.stringify(localArrow))
     console.log(todoArrow);
 })
 
