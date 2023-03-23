@@ -124,6 +124,16 @@ ul.addEventListener('DOMSubtreeModified', (e) => {
                     localStorage.setItem('tasks', JSON.stringify(newTaskArr))
                 }
             })
+            console.log(el.children[0]);
+            el.children[0].addEventListener('change', () => {
+                if(el.children[0].checked){
+                    const checkedTaskArr = JSON.parse(localStorage.getItem('tasks')).map((items, indx) => {
+                        return idx === indx ? {...items, checked: el.children[0].checked} : items
+                })
+                
+                localStorage.setItem('tasks', JSON.stringify(checkedTaskArr))
+            }
+        })
             return {
                 text: el.children[1].value,
                 checked: el.children[0].checked
@@ -138,3 +148,11 @@ ul.addEventListener('DOMSubtreeModified', (e) => {
 
 
 root.appendChild(container)
+
+// el.children[0].addEventListener('change', () => {
+//     if(el.children[0].checked === 'true'){
+//         const checkedTaskArr = JSON.parse(localStorage.getItem('newTaskArr')).map((item) => {
+//             return  {...item, checked: el.children[0].checked} 
+//     })
+//     localStorage.setItem('newTaskArr', JSON.stringify(checkedTaskArr))
+// }})
