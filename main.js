@@ -20,6 +20,7 @@ window.addEventListener('load', (event) => {
         const li = document.createElement('li')
     const checkbox = document.createElement('input')
     checkbox.setAttribute('type', 'checkbox')
+    checkbox.checked = el.checked
     const todoText = document.createElement('input')
     todoText.setAttribute('type', 'text')
     todoText.setAttribute('readonly','readonly')
@@ -126,7 +127,7 @@ ul.addEventListener('DOMSubtreeModified', (e) => {
             })
             console.log(el.children[0]);
             el.children[0].addEventListener('change', () => {
-                if(el.children[0].checked){
+                if(el.children[0].checked || !el.children[0].checked){
                     const checkedTaskArr = JSON.parse(localStorage.getItem('tasks')).map((items, indx) => {
                         return idx === indx ? {...items, checked: el.children[0].checked} : items
                 })
