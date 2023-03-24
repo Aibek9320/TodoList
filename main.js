@@ -117,6 +117,14 @@ container.appendChild(ul)
 ul.addEventListener('DOMSubtreeModified', (e) => {
     if(e.target.localName === 'ul'){
         const todoArr =  Array.from(e.target.children).map((el, idx) => {
+            JSON.parse(localStorage.getItem('tasks')).map((item, index) => {
+                if(index === idx){
+                    if(item.checked){
+                        el.children[1].style = 'text-decoration: line-through;'
+                    }
+                }
+            })
+            
             el.children[2].addEventListener('click', (e) => {
                 if(el.children[2].textContent !== 'save'){
                     const newTaskArr = JSON.parse(localStorage.getItem('tasks')).map((item, index) => {
